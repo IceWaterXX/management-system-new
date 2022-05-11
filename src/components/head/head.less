@@ -1,0 +1,47 @@
+.headtitle{
+    height: 80px;
+    background-color: aliceblue;
+    .head-top{
+        border-bottom: 1px solid #1da57a;
+        height: 40px;
+        text-align: right;
+        line-height: 40px;
+        padding-right: 20px;
+            span{
+                margin-right: 20px;
+            }
+    } 
+    .head-bottom{
+        height: 40px;
+        display: flex;
+        align-items: center;
+        .head-bottom-left{
+            width: 25%;
+            text-align: center;
+            font-size: 20px;
+            position: relative;
+            &::after{ //设置小三角,利用伪元素
+                content: '';
+                 //   因为上面设置了字体大小,所以不是正方形content: '';相当于伪类内为字体,也会受到font-size设置影响,可以设置font-size为0,但我们
+                 //要移动三角,所以开启定位直接解决
+                position: absolute; //直接脱离文档流,高被内容撑开,但没有内容,高度为0,不脱离文档流时,我们用伪类加了一个内容,又因为在父元素中设置了字体大小,则自动继承,所以改变了边框的高度
+                border-top: 20px solid aliceblue;//脱离文档流会把''当作没有元素解析,但是在文档流中会解析为一个空的字符,所以会撑开高度
+                border-bottom: 20px solid transparent;
+                border-left: 20px solid transparent;
+                border-right: 20px solid transparent;
+                transform: translateX(50%);
+                right: 50%;
+                top:  100%;
+            }
+        }   
+        .head-bottom-right{
+            width: 75%;
+            text-align: right;
+            margin-right: 20px;
+                img{margin: 0 15px; width: 30px;height: 20px;}
+                .city{
+                    margin-left: 8px;
+                }
+        }
+    }
+}
